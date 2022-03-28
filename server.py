@@ -16,7 +16,10 @@ try:
         data = conn.recv(BUFFER_SIZE)
         if not data: break
         print ("received data:", data)
-        conn.send("Reciví: " + data)  # echo
+        f = open("printtest.txt", "a")
+        f.write(str(data)+ "\n")
+        f.close()
+        conn.send(data)  # echo
 except KeyboardInterrupt:
     print("keyboardinterrupt is caught")
     conn.close()
